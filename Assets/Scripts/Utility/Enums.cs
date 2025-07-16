@@ -8,6 +8,7 @@ public class Enums : MonoBehaviour
         N,
         R,
         SR,
+        SSR,
     }
 
     public enum Type

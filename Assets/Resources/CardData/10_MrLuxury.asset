@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e9a2b2b975ed4d819d8499e30fe57, type: 3}
+  m_Name: 10_MrLuxury
+  m_EditorClassIdentifier: 
+  id: 10
+  cardName: "\uBA85\uD488\uC544\uC800\uC528"
+  rarity: 2
+  type: 1
+  power: 9
+  cardSprite: {fileID: 1491806937938089464, guid: e0c2b910968425d46927ca2c10446b2c, type: 3}
