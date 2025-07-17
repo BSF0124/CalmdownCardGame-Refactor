@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Core
 {
@@ -12,8 +13,8 @@ namespace Core
         private void Start()
         {
             Init();
-
-            SceneLoader.Instance.LoadScene("MainMenu", true);
+            SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
+            SceneLoader.Instance.LoadScene("GameScene", true);
         }
 
         private void Init()

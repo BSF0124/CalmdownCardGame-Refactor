@@ -7,15 +7,9 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private UnityEngine.UI.Slider progressBar;
 
-    [Header("Loading Scene")]
+    [Header("Fade Effect")]
     [SerializeField] private CanvasGroup fadeCanvas;
     [SerializeField] private float fadeDuration = 0.5f;
-
-    private void Start()
-    {
-        fadeCanvas.alpha = 1f;
-        StartCoroutine(FadeEffect(1f, 0f));
-    }
 
     #region Loading Screen
     public void ShowLoadingScreen()
@@ -42,7 +36,7 @@ public class UIManager : MonoSingleton<UIManager>
         float elapsed = 0f;
         while (elapsed < fadeDuration)
         {
-            elapsed += Time.unscaledDeltaTime;
+            elapsed += Time.deltaTime;
             fadeCanvas.alpha = Mathf.Lerp(start, end, elapsed / fadeDuration);
             yield return null;
         }

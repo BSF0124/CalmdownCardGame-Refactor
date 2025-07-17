@@ -13,50 +13,59 @@ public class SceneLoader : MonoSingleton<SceneLoader>
     // 씬 로딩 완료 후 호출
     public event Action OnSceneLoaded;
 
+    private string currentScene = "MainMenuScene";
     private bool isLoading = false;
 
-    // 지정한 씬으로 전환 시작
-    public void LoadScene(string sceneName, bool showLoadingUI = true)
+    // 지정한 씬으로 Additive 로드
+    public void LoadScene(string sceneName, bool showLoadingUI = true, bool unloadPrev = true)
     {
         if (isLoading) return;
-        StartCoroutine(LoadAsync(sceneName, showLoadingUI));
+        StartCoroutine(LoadAsync(sceneName, showLoadingUI, unloadPrev));
     }
 
-    private IEnumerator LoadAsync(string sceneName, bool showLoadingUI)
+    private IEnumerator LoadAsync(string sceneName, bool showLoadingUI, bool unloadPrev)
     {
         isLoading = true;
 
         // 1) 페이드 아웃
-        yield return UIManager.Instance.FadeEffect(0f, 1f);
+        yield return StartCoroutine(CoreManager.Instance.ui.FadeEffect(0f, 1f));
 
         // 2) 로딩 화면 열기
         if (showLoadingUI)
             CoreManager.Instance.ui.ShowLoadingScreen();
 
-        // 3) 비동기 로딩
-        AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
-        op.allowSceneActivation = false;
+        // 3) 이전 씬 언로드
+        if (unloadPrev && !string.IsNullOrEmpty(currentScene))
+            yield return SceneManager.UnloadSceneAsync(currentScene);
 
-        while (op.progress < 0.9f)
+        // 4) 새 씬 Additive 로드
+        var op = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        op.allowSceneActivation = true;
+
+        while (!op.isDone)
         {
             OnProgressChanged?.Invoke(op.progress);
             yield return null;
         }
+        currentScene = sceneName;
 
-        OnProgressChanged?.Invoke(1.0f);
-        yield return new WaitForSeconds(0.5f);
+        if (showLoadingUI) CoreManager.Instance.ui.HideLoadingScreen();
+        yield return StartCoroutine(CoreManager.Instance.ui.FadeEffect(1f, 0f));
 
-        // 4) 씬 활성화
-        op.allowSceneActivation = true;
-        while (!op.isDone)
-            yield return null;
+        // OnProgressChanged?.Invoke(1.0f);
+        // yield return new WaitForSeconds(0.5f);
 
-        // 5) 로딩 화면 닫기
-        if (showLoadingUI)
-            CoreManager.Instance.ui.HideLoadingScreen();
+        // // 4) 씬 활성화
+        // op.allowSceneActivation = true;
+        // while (!op.isDone)
+        //     yield return null;
 
-        // 6) 페이드 인
-        yield return UIManager.Instance.FadeEffect(1f, 0f);
+        // // 5) 로딩 화면 닫기
+        // if (showLoadingUI)
+        //     CoreManager.Instance.ui.HideLoadingScreen();
+
+        // // 6) 페이드 인
+        // yield return UIManager.Instance.FadeEffect(1f, 0f);
 
         // 7) 완료 콜백
         OnSceneLoaded?.Invoke();
