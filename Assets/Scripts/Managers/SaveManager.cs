@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using Core;
 using UnityEngine;
+
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
-    private const string SAVE_KEY = "";
-    public PlayerData currentSave { get; private set; }
+    private const string SAVE_KEY = Define.GameSaveKey;
+    public GameSaveData currentSave { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
         DontDestroyOnLoad(gameObject);
         LoadGame();
@@ -16,7 +16,7 @@ public class SaveManager : MonoSingleton<SaveManager>
     public void SaveGame()
     {
         // 1) 스테이지 정보
-        currentSave.hightestClearedStage = StageManager.Instance.highestClearedStage;
+        currentSave.highestClearedStage = StageManager.Instance.highestClearedStage;
 
         // 2) 카드 인벤토리 정보
         currentSave.cardInventories = InventoryManager.Instance.GetInventoryList();
@@ -37,17 +37,17 @@ public class SaveManager : MonoSingleton<SaveManager>
         if (PlayerPrefs.HasKey(SAVE_KEY))
         {
             string json = PlayerPrefs.GetString(SAVE_KEY);
-            currentSave = JsonUtility.FromJson<PlayerData>(json);
+            currentSave = JsonUtility.FromJson<GameSaveData>(json);
             Debug.Log("[SaveManager] Game loaded from save.");
 
-            StageManager.Instance.LoadFromSave(currentSave.hightestClearedStage);
+            StageManager.Instance.LoadFromSave(currentSave.highestClearedStage);
 
             InventoryManager.Instance.LoadInventory(currentSave.cardInventories);
             InventoryManager.Instance.SetCardPackCount(currentSave.ownedCardPackCount);
         }
         else
         {
-            currentSave = new PlayerData();
+            currentSave = new GameSaveData();
             Debug.Log("[SaveManager] No save data; starting fresh.");
         }
     }

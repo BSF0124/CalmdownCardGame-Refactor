@@ -5,7 +5,7 @@ public class DataManager : MonoSingleton<DataManager>
 {
     public List<CardData> allCards { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
         DontDestroyOnLoad(gameObject);
         LoadAllCardData();
@@ -14,7 +14,7 @@ public class DataManager : MonoSingleton<DataManager>
     private void LoadAllCardData()
     {
         allCards = new List<CardData>(Resources.LoadAll<CardData>("CardData"));
-        Debug.Log("$[DataManager] Loaded {allCards.Count} cards.");
+        Debug.Log($"[DataManager] Loaded {allCards.Count} cards.");
     }
 
     public CardData GetCardByID(int cardID)

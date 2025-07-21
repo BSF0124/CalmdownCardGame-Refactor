@@ -14,12 +14,11 @@ public class GameManager : MonoSingleton<GameManager>
     {
         currentStage = stage;
     }
-
+    
     // public void SetPlayerDeck(Deck deck)
     // {
     //     playerDeck = deck;
     // }
-
     public void EndGame()
     {
         Debug.Log("Game Over");

@@ -19,4 +19,9 @@ public class Enums : MonoBehaviour
         Paper,
         All,
     }
+
+    public enum SceneList
+    {
+        MainMenu,
+    }
 }

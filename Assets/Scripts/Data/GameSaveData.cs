@@ -9,9 +9,9 @@ public class CardInventory
 }
 
 [System.Serializable]
-public class PlayerData
+public class GameSaveData
 {
-    public int hightestClearedStage = 0;
+    public int highestClearedStage = 0;
     public List<CardInventory> cardInventories = new List<CardInventory>();
     public int ownedCardPackCount = 0;
 }
