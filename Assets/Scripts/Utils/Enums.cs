@@ -20,8 +20,10 @@ public class Enums : MonoBehaviour
         All,
     }
 
-    public enum SceneList
+    public enum SceneType
     {
+        Null = 0,
         MainMenu,
+        Game,
     }
 }

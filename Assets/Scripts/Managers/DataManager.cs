@@ -19,6 +19,6 @@ public class DataManager : MonoSingleton<DataManager>
 
     public CardData GetCardByID(int cardID)
     {
-        return allCards.Find(c => c.id == cardID);
+        return allCards.Find(c => c.cardID == cardID);
     }
 }

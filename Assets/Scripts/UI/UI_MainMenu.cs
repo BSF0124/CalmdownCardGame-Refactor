@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class UI_MainMenu : MonoBehaviour
 {
     public void OnPlayButton()
     {
-        SceneLoader.Instance.LoadScene("Game");
+        SceneLoader.Instance.LoadScene(Enums.SceneType.Game);
     }
 
     public void OnSettingButton()

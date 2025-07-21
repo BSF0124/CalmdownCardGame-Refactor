@@ -8,16 +8,16 @@ public class SceneLoader : MonoSingleton<SceneLoader>
 {
     // 씬 로딩 완료 후 호출
     public event Action OnSceneLoaded;
-    private string currentScene = "MainMenu";
+    private Enums.SceneType currentScene = Enums.SceneType.MainMenu;
     private bool isLoading = false;
 
     // 지정한 씬으로 Additive 로드
-    public void LoadScene(string sceneName)
+    public void LoadScene(Enums.SceneType sceneType)
     {
-        StartCoroutine(LoadAsync(sceneName));
+        StartCoroutine(LoadAsync(sceneType));
     }
 
-    private IEnumerator LoadAsync(string sceneName)
+    private IEnumerator LoadAsync(Enums.SceneType sceneType)
     {
         if (isLoading) yield break;
 
@@ -27,15 +27,14 @@ public class SceneLoader : MonoSingleton<SceneLoader>
         yield return StartCoroutine(CoreManager.Instance.ui.FadeOut());
 
         // 2) 이전 씬 언로드
-        if(!string.IsNullOrEmpty(currentScene))
-            yield return SceneManager.UnloadSceneAsync(currentScene);
+        yield return SceneManager.UnloadSceneAsync((int)currentScene);
 
         // 3) 새 씬 Additive 로드
-        var loadOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        var loadOp = SceneManager.LoadSceneAsync((int)sceneType, LoadSceneMode.Additive);
         loadOp.allowSceneActivation = true;
         while (!loadOp.isDone)
             yield return null;
-        currentScene = sceneName;
+        currentScene = sceneType;
         yield return new WaitForSeconds(Define.FadeDuration/2f);
 
         // 4) 페이드 인

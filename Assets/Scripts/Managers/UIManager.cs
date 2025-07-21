@@ -15,7 +15,14 @@ public class UIManager : MonoSingleton<UIManager>
     {
         base.Awake();
         fadeCanvas.gameObject.SetActive(false);
-        RegisterAllPanels();
+
+        panelDict.Clear();
+        foreach (var panel in uiPanels)
+        {
+            if (panel == null) continue;
+            panelDict[panel.name] = panel;
+            panel.SetActive(false);
+        }
     }
 
     #region Fade In/Out
@@ -24,7 +31,7 @@ public class UIManager : MonoSingleton<UIManager>
         float elapsed = 0f;
         while (elapsed < Define.FadeDuration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             fadeCanvas.alpha = Mathf.Lerp(1f, 0f, elapsed / Define.FadeDuration);
             yield return null;
         }
@@ -39,7 +46,7 @@ public class UIManager : MonoSingleton<UIManager>
         float elapsed = 0f;
         while (elapsed < Define.FadeDuration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             fadeCanvas.alpha = Mathf.Lerp(0f, 1f, elapsed / Define.FadeDuration);
             yield return null;
         }
@@ -48,17 +55,6 @@ public class UIManager : MonoSingleton<UIManager>
     #endregion
 
     #region UI Panel
-    public void RegisterAllPanels()
-    {
-        panelDict.Clear();
-        foreach (var panel in uiPanels)
-        {
-            if (panel == null) continue;
-            panelDict[panel.name] = panel;
-            panel.SetActive(false);
-        }
-    }
-
     public void ShowPanel(string panelName)
     {
         if (panelDict.TryGetValue(panelName, out var panel))
