@@ -11,6 +11,7 @@ public class CoreManager : MonoSingleton<CoreManager>
     public InventoryManager inventory { get; private set; }
     public DataManager data { get; private set; }
     public SaveManager save { get; private set; }
+    public SettingManager setting { get; private set; }
 
     protected override void Awake()
     {
@@ -21,22 +22,14 @@ public class CoreManager : MonoSingleton<CoreManager>
 
     private void Init()
     {
-        // game = FindAnyObjectByType<GameManager>();
-        // deck = FindAnyObjectByType<DeckManager>();
-        // ui = FindAnyObjectByType<UIManager>();
-        // scene = FindAnyObjectByType<SceneLoader>();
-        // stage = FindAnyObjectByType<StageManager>();
-        // inventory = FindAnyObjectByType<InventoryManager>();
-        // data = FindAnyObjectByType<DataManager>();
-        // save = FindAnyObjectByType<SaveManager>();
-
-        game = FindObjectOfType<GameManager>();
-        deck = FindObjectOfType<DeckManager>();
-        ui = FindObjectOfType<UIManager>();
-        scene = FindObjectOfType<SceneLoader>();
-        stage = FindObjectOfType<StageManager>();
-        inventory = FindObjectOfType<InventoryManager>();
-        data = FindObjectOfType<DataManager>();
-        save = FindObjectOfType<SaveManager>();
+        game = FindAnyObjectByType<GameManager>();
+        deck = FindAnyObjectByType<DeckManager>();
+        ui = FindAnyObjectByType<UIManager>();
+        scene = FindAnyObjectByType<SceneLoader>();
+        stage = FindAnyObjectByType<StageManager>();
+        inventory = FindAnyObjectByType<InventoryManager>();
+        data = FindAnyObjectByType<DataManager>();
+        save = FindAnyObjectByType<SaveManager>();
+        setting = FindAnyObjectByType<SettingManager>();
     }
 }

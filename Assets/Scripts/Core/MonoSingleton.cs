@@ -9,7 +9,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<T>();
+                instance = FindAnyObjectByType<T>();
                 if (instance == null)
                 {
                     Debug.LogError($"MonoSingleton<{typeof(T)}> instance not found");

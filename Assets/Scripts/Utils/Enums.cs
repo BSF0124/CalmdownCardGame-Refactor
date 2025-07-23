@@ -24,6 +24,8 @@ public class Enums : MonoBehaviour
     {
         Null = 0,
         MainMenu,
-        Game,
+        Stage,
+        Dual,
+        CutScene,
     }
 }

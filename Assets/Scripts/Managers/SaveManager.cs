@@ -10,9 +10,13 @@ public class SaveManager : MonoSingleton<SaveManager>
     protected override void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        LoadGame();
     }
 
+    private void Start()
+    {
+        LoadGame();
+    }
+    
     public void SaveGame()
     {
         // 1) 스테이지 정보
@@ -24,7 +28,14 @@ public class SaveManager : MonoSingleton<SaveManager>
         // 3) 카드팩 개수
         currentSave.ownedCardPackCount = InventoryManager.Instance.CardPackCount;
 
-        // 4) Json -> PlayerPrefs
+        // 4) 설정
+        currentSave.masterVolume = SettingManager.Instance.MasterVolume;
+        currentSave.bgmVolume = SettingManager.Instance.BgmVolume;
+        currentSave.sfxVolume = SettingManager.Instance.SfxVolume;
+        currentSave.isFullScreen = SettingManager.Instance.IsFullScreen;
+        currentSave.resolutionIndex = SettingManager.Instance.ResolutionIndex;
+
+        // 5) Json -> PlayerPrefs
         string json = JsonUtility.ToJson(currentSave);
         PlayerPrefs.SetString(SAVE_KEY, json);
         PlayerPrefs.Save();
@@ -44,6 +55,14 @@ public class SaveManager : MonoSingleton<SaveManager>
 
             InventoryManager.Instance.LoadInventory(currentSave.cardInventories);
             InventoryManager.Instance.SetCardPackCount(currentSave.ownedCardPackCount);
+
+            var s = SettingManager.Instance;
+            s.MasterVolume = currentSave.masterVolume;
+            s.BgmVolume = currentSave.bgmVolume;
+            s.SfxVolume = currentSave.sfxVolume;
+            s.IsFullScreen = currentSave.isFullScreen;
+            s.ResolutionIndex = currentSave.resolutionIndex;
+            s.ApplySettings();
         }
         else
         {

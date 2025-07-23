@@ -5,7 +5,7 @@ public class UI_MainMenu : MonoBehaviour
 {
     public void OnPlayButton()
     {
-        SceneLoader.Instance.LoadScene(Enums.SceneType.Game);
+        SceneLoader.Instance.LoadScene(Enums.SceneType.Stage);
     }
 
     public void OnSettingButton()
