@@ -28,4 +28,11 @@ public class Enums : MonoBehaviour
         Dual,
         CutScene,
     }
+
+    public enum StageState
+    {
+        Locked = 0,
+        Unlocked,
+        Cleared
+    }
 }
