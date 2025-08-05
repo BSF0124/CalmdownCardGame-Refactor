@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834e9a2b2b975ed4d819d8499e30fe57, type: 3}
+  m_Script: {fileID: 11500000, guid: 3195a9da89d016248a47a9922f2fb58c, type: 3}
   m_Name: 10_MrLuxury
   m_EditorClassIdentifier: 
   id: 10
   cardName: "\uBA85\uD488\uC544\uC800\uC528"
-  rarity: 2
-  type: 1
-  power: 9
+  cardRarity: 2
+  cardType: 1
+  attackPower: 9
   cardSprite: {fileID: 1491806937938089464, guid: e0c2b910968425d46927ca2c10446b2c, type: 3}

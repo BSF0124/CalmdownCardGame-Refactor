@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834e9a2b2b975ed4d819d8499e30fe57, type: 3}
+  m_Script: {fileID: 11500000, guid: 3195a9da89d016248a47a9922f2fb58c, type: 3}
   m_Name: 19_CrazyHorse
   m_EditorClassIdentifier: 
   id: 19
   cardName: "\uC720\uB2C8\uCF58\u2665\uCE68\uCC29\uB9E8"
-  rarity: 2
-  type: 2
-  power: 11
+  cardRarity: 2
+  cardType: 2
+  attackPower: 11
   cardSprite: {fileID: 3100850122404561150, guid: 6f263850472ddc94b8c8f111731097c4, type: 3}

@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834e9a2b2b975ed4d819d8499e30fe57, type: 3}
+  m_Script: {fileID: 11500000, guid: 3195a9da89d016248a47a9922f2fb58c, type: 3}
   m_Name: 22_ZeroTwo
   m_EditorClassIdentifier: 
   id: 22
   cardName: "\uC81C\uB85C\uD22C"
-  rarity: 2
-  type: 3
-  power: 12
+  cardRarity: 2
+  cardType: 3
+  attackPower: 12
   cardSprite: {fileID: -8890214998110171551, guid: 98c877c6028932746b227ff63aca4930, type: 3}

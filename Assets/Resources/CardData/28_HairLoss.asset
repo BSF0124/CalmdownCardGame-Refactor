@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834e9a2b2b975ed4d819d8499e30fe57, type: 3}
+  m_Script: {fileID: 11500000, guid: 3195a9da89d016248a47a9922f2fb58c, type: 3}
   m_Name: 28_HairLoss
   m_EditorClassIdentifier: 
   id: 28
   cardName: "\uCE68\uC22D\uC774"
-  rarity: 1
-  type: 2
-  power: 11
+  cardRarity: 1
+  cardType: 2
+  attackPower: 11
   cardSprite: {fileID: -7059125439277099093, guid: fa9be2911004c8f438f1e231db23e52e, type: 3}

@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834e9a2b2b975ed4d819d8499e30fe57, type: 3}
+  m_Script: {fileID: 11500000, guid: 3195a9da89d016248a47a9922f2fb58c, type: 3}
   m_Name: 18_Dangerousmanleebyeonggeon
   m_EditorClassIdentifier: 
   id: 18
   cardName: "\uC704\uD5D8\uD55C \uC790\uC2DD"
-  rarity: 1
-  type: 2
-  power: 12
+  cardRarity: 1
+  cardType: 2
+  attackPower: 12
   cardSprite: {fileID: -7659278604157428266, guid: 51a1e9ec4e4c71949a207a0e791e594a, type: 3}

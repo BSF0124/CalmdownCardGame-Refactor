@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834e9a2b2b975ed4d819d8499e30fe57, type: 3}
+  m_Script: {fileID: 11500000, guid: 3195a9da89d016248a47a9922f2fb58c, type: 3}
   m_Name: 3_SoldierMan
   m_EditorClassIdentifier: 
   id: 3
   cardName: "\uAD70\uC778\uB9E8"
-  rarity: 1
-  type: 1
-  power: 9
+  cardRarity: 1
+  cardType: 1
+  attackPower: 9
   cardSprite: {fileID: 1950666360017941583, guid: 01a112124e8aabe49a446f93aed2b564, type: 3}

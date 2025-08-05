@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834e9a2b2b975ed4d819d8499e30fe57, type: 3}
+  m_Script: {fileID: 11500000, guid: 3195a9da89d016248a47a9922f2fb58c, type: 3}
   m_Name: 2_GuanYuMan
   m_EditorClassIdentifier: 
   id: 2
   cardName: "\uAD00\uC6B0\uB9E8"
-  rarity: 2
-  type: 3
-  power: 7
+  cardRarity: 2
+  cardType: 3
+  attackPower: 7
   cardSprite: {fileID: 8274210941166642627, guid: 5b87aa3f90467b0449c598955602ef33, type: 3}

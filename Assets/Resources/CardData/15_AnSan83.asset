@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834e9a2b2b975ed4d819d8499e30fe57, type: 3}
+  m_Script: {fileID: 11500000, guid: 3195a9da89d016248a47a9922f2fb58c, type: 3}
   m_Name: 15_AnSan83
   m_EditorClassIdentifier: 
   id: 15
   cardName: "\uC548\uC0B083"
-  rarity: 1
-  type: 1
-  power: 12
+  cardRarity: 1
+  cardType: 1
+  attackPower: 12
   cardSprite: {fileID: 3183030924739311637, guid: 5f050e49b9fbe4749a9986e523e2b104, type: 3}
