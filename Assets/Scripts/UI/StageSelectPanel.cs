@@ -131,7 +131,7 @@ namespace UI
             int globalStageNum = globalOffset + localIndex + 1;
 
             gameMgr.SelectedStage = globalStageNum;
-            // sceneTransMgr.LoadScene(Enums.SceneType.Stage);
+            sceneTransMgr.LoadScene(Enums.SceneType.Dual);
             print(globalStageNum);
         }
     }
