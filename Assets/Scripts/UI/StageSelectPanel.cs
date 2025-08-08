@@ -9,14 +9,12 @@ namespace UI
     public class StageSelectPanel : MonoBehaviour
     {
         [Header("UI Objects")]
+        [SerializeField] private Text worldTitleText;
         [SerializeField] private Button prevWorldButton;
         [SerializeField] private Button nextWorldButton;
         [SerializeField] private Button closeButton;
-        [SerializeField] private Text worldTitleText;
-
-        [Header("Stage Buttons")]
         [SerializeField] private Button[] stageButtons;
-
+        [SerializeField] private GameObject myCardPanel;
 
         [Header("World Names")]
         [SerializeField] private string[] worldNames =
@@ -27,6 +25,7 @@ namespace UI
             "지하철 1호선",
             "OO 학원"
         };
+
         [Header("Sprites")]
         [SerializeField] private Sprite lockedSprite;
         [SerializeField] private Sprite[] unlockedSprite;
@@ -38,12 +37,14 @@ namespace UI
         private IPlayerDataManager playerDataMgr;
         private ISceneTransitionManager sceneTransMgr;
         private IGameManager gameMgr;
+        private IStageDataManager stageDataMgr;
 
         void Awake()
         {
             playerDataMgr = CoreManager.I.GetManager<IPlayerDataManager>();
             sceneTransMgr = CoreManager.I.GetManager<ISceneTransitionManager>();
             gameMgr = CoreManager.I.GetManager<IGameManager>();
+            stageDataMgr = CoreManager.I.GetManager<IStageDataManager>();
 
             if (playerDataMgr == null || sceneTransMgr == null)
                 Debug.LogError("[StageSelectPanel] Manager not found.");
@@ -87,10 +88,11 @@ namespace UI
             else
                 worldTitleText.text = $"월드 {currentWorld + 1}: ???";
 
-
             prevWorldButton.interactable = currentWorld > 0;
-            nextWorldButton.interactable = currentWorld < worldStageCounts.Length - 1;
+            prevWorldButton.gameObject.SetActive(currentWorld > 0); 
 
+            nextWorldButton.interactable = currentWorld < worldStageCounts.Length - 1;
+            nextWorldButton.gameObject.SetActive(currentWorld < worldStageCounts.Length - 1);
 
             for (int i = 0; i < stageButtons.Length; i++)
             {
@@ -127,12 +129,16 @@ namespace UI
 
         private void OnStageClicked(int localIndex)
         {
+            gameMgr.isStageSelected = true;
             int globalOffset = worldStageCounts.Take(currentWorld).Sum();
             int globalStageNum = globalOffset + localIndex + 1;
 
-            gameMgr.SelectedStage = globalStageNum;
-            sceneTransMgr.LoadScene(Enums.SceneType.Dual);
-            print(globalStageNum);
+            gameMgr.CurrentStageData = stageDataMgr.GetStageData(globalStageNum);
+
+            if (gameMgr.CurrentStageData.requiresDeck)
+                myCardPanel.SetActive(true);
+            else
+                sceneTransMgr.LoadScene(Enums.SceneType.Dual);
         }
     }
 }

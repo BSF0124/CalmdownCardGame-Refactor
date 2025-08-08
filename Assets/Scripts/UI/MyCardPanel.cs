@@ -8,10 +8,12 @@ namespace UI
 {
     public class MyCardPanel : MonoBehaviour
     {
-        [Header("UI References")]
+        [Header("UI Objects")]
         [SerializeField] private Button closeButton;
         [SerializeField] private RectTransform content;
         [SerializeField] private GameObject cardEntryPrefab;
+        [SerializeField] private GameObject cardPackPanel;
+        [SerializeField] private GameObject deckBuilderPanel;
 
         private ICardDataManager cardDataMgr;
         private IPlayerDataManager playerDataMgr;
@@ -24,13 +26,28 @@ namespace UI
             if (cardDataMgr == null || playerDataMgr == null)
                 Debug.LogError("[MyCardPanel] Manager not found.");
 
-            closeButton.onClick.AddListener(() => gameObject.SetActive(false));
+            closeButton.onClick.AddListener(ClosePanel);
         }
 
-        public void OpenPanel()
+        void OnEnable()
         {
             UpdateList();
-            gameObject.SetActive(true);
+            if (CoreManager.I.GetManager<IGameManager>().isStageSelected)
+            {
+                cardPackPanel.SetActive(false);
+                deckBuilderPanel.SetActive(true);
+            }
+            else
+            {
+                cardPackPanel.SetActive(true);
+                deckBuilderPanel.SetActive(false);
+            }
+        }
+
+        public void ClosePanel()
+        {
+            CoreManager.I.GetManager<IGameManager>().isStageSelected = false;
+            gameObject.SetActive(false);
         }
 
         private void UpdateList()

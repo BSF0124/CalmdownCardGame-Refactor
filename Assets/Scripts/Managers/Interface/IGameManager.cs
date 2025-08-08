@@ -4,6 +4,8 @@ namespace Managers
 {
     public interface IGameManager : IManager
     {
-        int SelectedStage { get; set; }
+        StageData CurrentStageData { get; set; }
+        
+        bool isStageSelected { get; set; }
     }
 }

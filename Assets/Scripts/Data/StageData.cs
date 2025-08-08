@@ -16,6 +16,9 @@ public class StageData : ScriptableObject
     // AI가 사용하는 카드 목록
     public List<int> aiDeckIds = new List<int>();
 
+    // 플레이어가 덱을 구성해야 하는 스테이지인지
+    public bool requiresDeck;
+
     // 플레이어가 고정 덱으로 플레이 할 카드 목록
     public List<int> fixedDeckIds = new List<int>();
 }

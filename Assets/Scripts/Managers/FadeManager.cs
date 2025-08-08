@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Managers
 {
-    [DefaultExecutionOrder(-50)]
+    [DefaultExecutionOrder(-20)]
     public class FadeManager : MonoBehaviour, IFadeManager
     {
         [Tooltip("Fade Image")]
@@ -25,7 +25,6 @@ namespace Managers
             }
 
             CoreManager.I.RegisterManager<IFadeManager>(this);
-            // DontDestroyOnLoad(gameObject);
             SetAlpha(0f);
         }
 

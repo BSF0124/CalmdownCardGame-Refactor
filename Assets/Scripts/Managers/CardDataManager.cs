@@ -4,7 +4,7 @@ using Core;
 
 namespace Managers
 {
-    [DefaultExecutionOrder(-10)]
+    [DefaultExecutionOrder(-80)]
     public class CardDataManager : MonoBehaviour, ICardDataManager
     {
         private Dictionary<int, CardData> _cardDict;

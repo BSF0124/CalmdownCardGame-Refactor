@@ -16,4 +16,5 @@ MonoBehaviour:
   mode: 4
   specialRules: 
   aiDeckIds: 02000000090000000c0000000d0000000d0000000d000000100000001100000011000000
+  requiresDeck: 1
   fixedDeckIds: 

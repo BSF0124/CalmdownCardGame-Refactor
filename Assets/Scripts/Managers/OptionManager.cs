@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Managers
 {
-    [DefaultExecutionOrder(-30)]
+    [DefaultExecutionOrder(-50)]
     public class OptionManager : MonoBehaviour, IOptionManager
     {
         [SerializeField] private GameObject optionPanel;

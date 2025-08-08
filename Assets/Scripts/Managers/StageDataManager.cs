@@ -1,19 +1,32 @@
 using System.Collections.Generic;
+using System.Linq;
+using Core;
 using UnityEngine;
 
 namespace Managers
 {
-    public class StageDataManager : MonoBehaviour
+    [DefaultExecutionOrder(-90)]
+    public class StageDataManager : MonoBehaviour, IStageDataManager
     {
         private Dictionary<int, StageData> _stageMap;
 
         void Awake()
         {
+            CoreManager.I.RegisterManager<IStageDataManager>(this);
+
             var assets = Resources.LoadAll<StageData>("StageData");
-            _stageMap = new Dictionary<int, StageData>();
-            foreach (var sd in assets) _stageMap[sd.stageNumber] = sd;
+            _stageMap = assets.ToDictionary(sd => sd.stageNumber);
+
+            Debug.Log($"[StageDataManager] Loaded {_stageMap.Count} stages");
         }
 
-        public StageData GetStage(int num) => _stageMap.TryGetValue(num, out var sd) ? sd : null;
+        public StageData GetStageData(int stageNumber)
+        {
+            if (_stageMap.TryGetValue(stageNumber, out var sd))
+                return sd;
+            
+            Debug.LogError($"[StageDataManager] StageData {stageNumber} not found!");
+            return null;
+        }
     }
 }

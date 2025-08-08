@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    [DefaultExecutionOrder(-20)]
+    [DefaultExecutionOrder(-70)]
     public class PlayerDataManager : MonoBehaviour, IPlayerDataManager
     {
         private class PlayerData

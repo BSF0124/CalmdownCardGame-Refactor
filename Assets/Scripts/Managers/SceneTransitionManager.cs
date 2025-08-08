@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace Managers
 {
-    [DefaultExecutionOrder(-40)]
+    [DefaultExecutionOrder(-10)]
     public class SceneTransitionManager : MonoBehaviour, ISceneTransitionManager
     {
         private IFadeManager _fadeMgr;

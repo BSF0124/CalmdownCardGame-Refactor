@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Managers;
 using UnityEngine;
 
 namespace Core
@@ -23,8 +22,6 @@ namespace Core
 
             _instance = this;
             DontDestroyOnLoad(gameObject);
-
-            RegisterManager<IGameManager>(new GameManager());
         }
 
         // 매니저 등록
