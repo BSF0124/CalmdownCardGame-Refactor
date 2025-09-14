@@ -8,6 +8,8 @@ namespace UI
 {
     public class MyCardPanel : MonoBehaviour
     {
+        [SerializeField] private DeckBuilderPanel deckBuilder;
+
         [Header("UI Objects")]
         [SerializeField] private Button closeButton;
         [SerializeField] private RectTransform content;
@@ -65,6 +67,18 @@ namespace UI
                 var entry = Instantiate(cardEntryPrefab, content);
                 entry.GetComponent<CardEntry>().Init(cd.cardSprite, kv.Value);
             }
+        }
+
+        public void OnCardEntryClicked(int cardID)
+        {
+            if (!CoreManager.I.GetManager<GameManager>().isStageSelected)
+                return;
+
+            var cd = cardDataMgr.GetCard(cardID);
+            deckBuilder.AddCardList(cd);
+
+            playerDataMgr.AddCard(cardID, -1);
+            UpdateList();
         }
     }
 }

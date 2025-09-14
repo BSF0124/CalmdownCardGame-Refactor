@@ -1852,6 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd16b14a14a0424ca8e315857adc0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deckBuilder: {fileID: 0}
   closeButton: {fileID: 894173051}
   content: {fileID: 11565164}
   cardEntryPrefab: {fileID: 2880482017416466356, guid: e8acdc836c09857478388db9133fcd43, type: 3}
@@ -3639,8 +3640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f38a0f0331547348ad83f249597b671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  submitButton: {fileID: 0}
-  content: {fileID: 0}
+  submitButton: {fileID: 585345737}
+  content: {fileID: 941876707}
   cardListPrefab: {fileID: 0}
 --- !u!1 &1024511380
 GameObject:
@@ -5695,6 +5696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159ecbab89e3aae4186025e6fbef567d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardName: {fileID: 0}
 --- !u!1 &1929954896
 GameObject:
   m_ObjectHideFlags: 0

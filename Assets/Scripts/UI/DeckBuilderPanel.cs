@@ -24,7 +24,7 @@ namespace UI
                 Debug.LogError("[MyCardPanel] Manager not found.");
         }
 
-        void AddCardList(int cardID)
+        public void AddCardList(CardData card)
         {
 
         }
